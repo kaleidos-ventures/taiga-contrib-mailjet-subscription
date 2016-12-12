@@ -10,17 +10,6 @@ Plugin to subscribe and unsubscribe users to the newsletter and user list in Mai
 Installation
 ------------
 
-### Configure MailJet
-
-In MailJet you have to add two custom attributes to your contacts.
-
-1 - Open MailJet.
-2 - Go to `Settings` > `Attributes & CRM`
-3 - Add the attributes:
-    - Remove 'SURNAME' and 'NAME'
-    - Add 'FULL_NAME' and 'USERNAME' (text type both of them).
-
-
 ### Production env
 
 #### Taiga Back
