@@ -23,9 +23,9 @@ In your Taiga back python virtualenv install the pip package `taiga-contrib-mail
 Then modify in `taiga-back` your `settings/local.py` and include this line:
 
 ```python
-  MAILJET_NEWSLETTER_LIST_ID = "my-newsletter-list-id"
-  MAILJET_TAIGA_USERS_LIST_ID = "my-taiga-user-list-id"
   MAILJET_API_KEY = "XXXXXXXXXXXXXXXXX"
+  MAILJET_SECRET_KEY = "XXXXXXXXXXXXXXXXX"
+  MAILJET_CONTACTLIST_ID = "my-contactlist-id"
 
   INSTALLED_APPS += ["taiga_contrib_mailjet_subscription"]
 ```
@@ -69,8 +69,9 @@ Clone the repo and
 Then modify in `taiga-back` your `settings/local.py` and include this line:
 
 ```python
-  MAILCHIMP_NEWSLETTER_ID = "my-newsletter"
-  MAILCHIMP_API_KEY = "XXXXXXXXXXXXXXXXX"
+  MAILJET_API_KEY = "XXXXXXXXXXXXXXXXX"
+  MAILJET_SECRET_KEY = "XXXXXXXXXXXXXXXXX"
+  MAILJET_CONTACTLIST_ID = "my-contactlist-id"
 
   INSTALLED_APPS += ["taiga_contrib_mailjet_subscription"]
 ```
