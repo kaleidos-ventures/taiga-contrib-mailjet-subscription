@@ -10,6 +10,8 @@ Plugin to subscribe and unsubscribe users to the newsletter and user list in Mai
 Installation
 ------------
 
+**NOTE:** *Remeber that you need to create a contact list in MailJet and create the contact properties `username` (string), `full_name` (string) and `is_taiga_user` (boolean).*
+
 ### Production env
 
 #### Taiga Back
