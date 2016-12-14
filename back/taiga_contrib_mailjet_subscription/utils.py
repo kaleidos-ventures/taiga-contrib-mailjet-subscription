@@ -23,8 +23,8 @@ logger = logging.getLogger(__name__)
 
 def log_api_response(function):
     @wraps(function)
-    def decorator(*args):
-        res = function(*args)
+    def decorator(*args, **kwargs):
+        res = function(*args, **kwargs)
 
         if res.ok:
             logger.info("[Mailjet] {call}{args} - {message}:\n\t{data}".format(
@@ -50,9 +50,9 @@ def log_api_response(function):
 
 def catch_connection_errors(function):
     @wraps(function)
-    def decorator(*args):
+    def decorator(*args, **kwargs):
         try:
-            function(*args)
+            function(*args, **kwargs)
         except Exception as e:
             logger.error("[Mailjet] error on {call}{args}:\n\t{err}".format(
                 call=function.__name__,
