@@ -4,7 +4,7 @@ Taiga Contrib MailJet Subscription
 ![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
 [![Managed with Taiga.io](https://tree.taiga.io/support/images/taiga-badge-gh.png)](https://taiga.io "Managed with Taiga.io")
 
-Plugin to subscribe and unsubscribe users to the newsletter and user list in MailJet
+Plugin to subscribe and unsubscribe users to the newsletter list in MailJet
 
 
 Installation
