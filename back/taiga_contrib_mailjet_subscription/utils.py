@@ -30,14 +30,14 @@ def log_api_response(function):
             logger.info("[Mailjet] {call}{args} - {message}:\n\t{data}".format(
                 call=function.__name__,
                 args=str(args),
-                message=" ".join((res.status_code, res.reason)),
+                message=" ".join((str(res.status_code), res.reason)),
                 data=res.content or "-no data-"
             ))
         else:
             logger.error("[Mailjet] error on {call}{args} - {message}:\n\t{data}\n\tREQUEST:{request_call}\n\t{request_data}".format(
                 call=function.__name__,
                 args=str(args),
-                message=" ".join((res.status_code, res.reason)),
+                message=" ".join((str(res.status_code), res.reason)),
                 data=res.content or "-no data-",
                 request_call="{} {}".format(res.request.method, res.request.url),
                 request_data=str(res.request.body)
