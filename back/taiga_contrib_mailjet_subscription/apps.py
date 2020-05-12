@@ -16,43 +16,39 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from django.apps import AppConfig
+from django.conf import settings
+from django.core.checks import Warning, register
+import logging
 
+logger = logging.getLogger(__name__)
 
+warnings = []
 
 # Checks
-
-def check_mailjet_api_key(app_configs, **kwargs):
-    from django.conf import settings
-
-    mailjet_api_key = getattr(settings, "MAILJET_API_KEY", None)
-    if mailjet_api_key is not None:
-        return []
-
-    return [checks.Error("MAILJET_API_KEY must be set on settings",
-                         id="mailjet_subscription.A001")]
-
-
-def check_mailjet_secret_key(app_configs, **kwargs):
-    from django.conf import settings
-
-    mailjet_secret_key = getattr(settings, "MAILJET_SECRET_KEY", None)
-    if mailjet_secret_key is not None:
-        return []
-
-    return [checks.Error("MAILJET_SECRET_KEY must be set on settings",
-                         id="mailjet_subscription.A002")]
-
-
-def check_mailjet_contactlist_id(app_configs, **kwargs):
-    from django.conf import settings
-
-    contactlist_id = getattr(settings, "MAILJET_CONTACTLIST_ID", None)
-    if contactlist_id is not None:
-        return []
-
-    return [checks.Error("MAILJET_CONTACTLIST_ID must be set on settings",
-                         id="mailjet_subscription.A003")]
-
+@register
+def check_mailjet_config(**kwargs):
+    if not getattr(settings, "MAILJET_API_KEY"):
+        warnings.append(
+            Warning(
+                "MAILJET_API_KEY must be set on settings",
+                id="mailjet_subscription.A001",
+            )
+        )
+    if not getattr(settings, "MAILJET_SECRET_KEY"):
+        warnings.append(
+            Warning(
+                "MAILJET_SECRET_KEY must be set on settings",
+                id="mailjet_subscription.A002",
+            )
+        )
+    if not getattr(settings, "MAILJET_CONTACTLIST_ID"):
+        warnings.append(
+            Warning(
+                "MAILJET_CONTACTLIST_ID must be set on settings",
+                id="mailjet_subscription.A003",
+            )
+        )
+    return warnings
 
 # Signals
 
@@ -83,10 +79,5 @@ class MailjetSubscriptionAppConfig(AppConfig):
     verbose_name = "Mailjet Subscription App Config"
 
     def ready(self):
-        from django.core.checks import register
-
-        register(check_mailjet_api_key)
-        register(check_mailjet_secret_key)
-        register(check_mailjet_contactlist_id)
-
-        connect_signals()
+        if not len(warnings):
+            connect_signals()
