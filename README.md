@@ -1,112 +1,45 @@
-Taiga Contrib MailJet Subscription
-=====================================
+Taiga contrib mailjet subscription
+===================
 
-![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
-[![Managed with Taiga.io](https://tree.taiga.io/support/images/taiga-badge-gh.png)](https://taiga.io "Managed with Taiga.io")
+The Taiga plugin for mailjet integration.
 
-Plugin to subscribe and unsubscribe users to the newsletter list in MailJet
+## Documentation
 
+Currently, we have authored three main documentation hubs:
 
-Installation
-------------
+- **[API](https://taigaio.github.io/taiga-doc/dist/api.html)**: Our API documentation and reference for developing from Taiga API.
+- **[Documentation](https://taigaio.github.io/taiga-doc/dist/)**: If you need to install Taiga on your own server, this is the place to find some guides.
+- **[Taiga Resources](https://resources.taiga.io)**: This page is intended to be the support reference page for the users.
 
-**NOTE:** *Remeber that you need to create a contact list in MailJet and create the contact properties `username` (string), `full_name` (string) and `is_taiga_user` (boolean).*
+## Bug reports
 
-### Production env
+If you **find a bug** in Taiga you can always report it:
 
-#### Taiga Back
+- in [Taiga issues](https://tree.taiga.io/project/taiga/issues). **This is the preferred way**
+- in [Github issues](https://github.com/taigaio/taiga-contrib-mailjet-subscription/issues)
+- send us a mail to support@taiga.io if is a bug related to [tree.taiga.io](https://tree.taiga.io)
+- send us a mail to security@taiga.io if is a **security bug**
 
-In your Taiga back python virtualenv install the pip package `taiga-contrib-mailjet-subscription` with:
+One of our fellow Taiga developers will search, find and hunt it as soon as possible.
 
-```bash
-  pip install -e "git+https://github.com/taigaio/taiga-contrib-mailjet-subscription.git@stable#egg=taiga-contrib-mailjet-subscription&subdirectory=back"
-```
+Please, before reporting a bug, write down how can we reproduce it, your operating system, your browser and version, and if it's possible, a screenshot. Sometimes it takes less time to fix a bug if the developer knows how to find it.
 
-Then modify in `taiga-back` your `settings/local.py` and include this line:
+## Community
 
-```python
-  MAILJET_API_KEY = "XXXXXXXXXXXXXXXXX"
-  MAILJET_SECRET_KEY = "XXXXXXXXXXXXXXXXX"
-  MAILJET_CONTACTLIST_ID = "my-contactlist-id"
+If you **need help to setup Taiga**, want to **talk about some cool enhancemnt** or you have **some questions**, please write us to our [mailing list](https://groups.google.com/d/forum/taigaio).
 
-  INSTALLED_APPS += ["taiga_contrib_mailjet_subscription"]
-```
+If you want to be up to date about announcements of releases, important changes and so on, you can subscribe to our newsletter (you will find it by scrolling down at [https://taiga.io](https://www.taiga.io/)) and follow [@taigaio](https://twitter.com/taigaio) on Twitter.
 
+## Contribute to Taiga
 
-#### Taiga Front
+There are many different ways to contribute to Taiga's platform, from patches, to documentation and UI enhancements, just find the one that best fits with your skills. Check out our detailed [contribution guide](https://resources.taiga.io/how-can-i-contribute)
 
-Download in your `dist/plugins/` directory of Taiga front the `taiga-contrib-mailjet-subscription` compiled code (you need subversion in your system):
+## Code of Conduct
 
-```bash
-  cd dist/
-  mkdir -p plugins
-  cd plugins
-  svn export "https://github.com/taigaio/taiga-contrib-mailjet-subscription/branches/stable/front/dist" "mailjet-subscription"
-```
+Help us keep the Taiga Community open and inclusive. Please read and follow our [Code of Conduct](https://github.com/taigaio/code-of-conduct/blob/master/CODE_OF_CONDUCT.md).
 
-Include in your `dist/conf.json` in the `contribPlugins` list the value `"/plugins/mailjet-subscription/mailjet-subscription.json"`:
+## License
 
-```json
-...
-    "contribPlugins": [
-        (...)
-        "/plugins/mailjet-subscription/mailjet-subscription.json"
-    ]
-...
-```
+Every code patch accepted in Taiga codebase is licensed under [AGPL v3.0](http://www.gnu.org/licenses/agpl-3.0.html). You must be careful to not include any code that can not be licensed under this license.
 
-
-### Dev env
-
-#### Taiga Back
-
-Clone the repo and
-
-```bash
-  cd taiga-contrib-mailjet-subscription/back
-  workon taiga
-  pip install -e .
-```
-
-Then modify in `taiga-back` your `settings/local.py` and include this line:
-
-```python
-  MAILJET_API_KEY = "XXXXXXXXXXXXXXXXX"
-  MAILJET_SECRET_KEY = "XXXXXXXXXXXXXXXXX"
-  MAILJET_CONTACTLIST_ID = "my-contactlist-id"
-
-  INSTALLED_APPS += ["taiga_contrib_mailjet_subscription"]
-```
-
-
-#### Taiga Front
-
-After clone the repo link `dist` in `taiga-front` plugins directory:
-
-```bash
-  cd taiga-front/dist
-  mkdir -p plugins
-  cd plugins
-  ln -s ../../../taiga-contrib-mailjet-subscription/front/dist mailjet-subscription
-```
-
-Include in your `dist/conf.json` in the `contribPlugins` list the value `"/plugins/mailjet-subscription/mailjet-subscription.json"`:
-
-```json
-...
-    "contribPlugins": [
-        (...)
-        "/plugins/mailjet-subscription/mailjet-subscription.json"
-    ]
-...
-```
-
-In the plugin source dir `taiga-contrib-mailjet-subscription` run
-
-```bash
-npm install
-```
-and use:
-
-- `gulp` to regenerate the source and watch for changes.
-- `gulp build` to only regenerate the source.
+Please read carefully [our license](https://github.com/taigaio/taiga-contrib-mailjet-subscription/blob/master/LICENSE) and ask us if you have any questions as well as the [Contribution policy](https://github.com/taigaio/taiga-contrib-mailjet-subscription/blob/master/CONTRIBUTING.md).

@@ -1,6 +1,6 @@
 {
   "name": "taiga-contrib-mailjet-subscription",
-  "version": "3.1.0",
+  "version": "6.0.0",
   "description": "Taiga contrib plugin to subscribe and unsubscribe users to a mailjet newsletter and user list.",
   "repository": {
     "type": "git",
